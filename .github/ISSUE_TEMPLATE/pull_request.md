@@ -17,9 +17,9 @@ assignees: ''
 ## Changes Made
 
 - List the main changes made in this PR:
-    - [ ] Change 1
-    - [ ] Change 2
-    - [ ] Change 3
+  - [ ] Change 1
+  - [ ] Change 2
+  - [ ] Change 3
 
 ## Screenshots (if applicable)
 
