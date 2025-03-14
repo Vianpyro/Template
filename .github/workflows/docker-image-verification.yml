@@ -25,10 +25,6 @@ jobs:
     name: Build and Scan ${{ inputs.image_name }}
     runs-on: ubuntu-latest
 
-    # permissions:
-    #   actions: read
-    #   security-events: write
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
