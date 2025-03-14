@@ -1,0 +1,13 @@
+name: Scan Devcontainer Image
+
+on:
+  push: null
+  pull_request: null
+
+jobs:
+  scan-app:
+    uses: Vianpyro/Template/.github/workflows/docker-image-verification.yml@main
+    with:
+      image_name: devcontainer
+      dockerfile_path: ./Dockerfile
+      context: .devcontainer

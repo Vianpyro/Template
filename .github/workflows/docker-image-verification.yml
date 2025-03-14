@@ -1,18 +1,28 @@
----
-name: Docker image build and scan
+name: Reusable Docker Image Build and Scan
 
 on:
-  push:
-    null
-    # branches:
-    #   - main
-  pull_request: null
+  workflow_call:
+    inputs:
+      image_name:
+        description: 'The name of the Docker image'
+        required: true
+        type: string
+      dockerfile_path:
+        description: 'Path to the Dockerfile'
+        required: false
+        type: string
+        default: './Dockerfile'
+      context:
+        description: 'Build context for Docker'
+        required: false
+        type: string
+        default: '.'
 
 permissions: {}
 
 jobs:
-  build:
-    name: Build and scan image
+  build-and-scan:
+    name: Build and Scan ${{ inputs.image_name }}
     runs-on: ubuntu-latest
 
     permissions:
@@ -34,13 +44,13 @@ jobs:
       - name: Build Docker image and load
         uses: docker/build-push-action@v6
         with:
-          context: '{{defaultContext}}:.devcontainer'
+          context: ${{ inputs.context }}
           load: true
-          tags: my-app:latest
+          tags: ${{ inputs.image_name }}:latest
 
       - name: Scan for vulnerabilities
         uses: crazy-max/ghaction-container-scan@v3
         with:
-          image: my-app:latest
-          dockerfile: ./Dockerfile
+          image: ${{ inputs.image_name }}:latest
+          dockerfile: ${{ inputs.dockerfile_path }}
           severity_threshold: HIGH
