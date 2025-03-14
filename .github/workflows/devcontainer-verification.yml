@@ -6,7 +6,7 @@ on:
 
 jobs:
   scan-app:
-    uses: Vianpyro/Template/.github/workflows/docker-image-verification.yml@main
+    uses: Vianpyro/Template/.github/workflows/docker-image-verification.yml@docs
     with:
       image_name: devcontainer
       dockerfile_path: ./Dockerfile
