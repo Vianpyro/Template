@@ -2,7 +2,8 @@
 name: Docker image build and scan
 
 on:
-  push: null
+  push:
+    null
     # branches:
     #   - main
   pull_request: null
@@ -33,7 +34,7 @@ jobs:
       - name: Build Docker image and load
         uses: docker/build-push-action@v6
         with:
-          context: .
+          context: "{{defaultContext}}:.devcontainer"
           load: true
           tags: my-app:latest
 
