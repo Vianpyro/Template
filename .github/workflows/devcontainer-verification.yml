@@ -15,7 +15,7 @@ jobs:
       actions: read
       security-events: write
 
-    uses: Vianpyro/Template/.github/workflows/docker-image-verification.yml@main
+    uses: <your-username>/<your-repo>/.github/workflows/docker-image-verification.yml@main
     with:
       image_name: devcontainer
       dockerfile_path: ./Dockerfile
