@@ -1,0 +1,3 @@
+config/sasl_passwd
+config/sasl_passwd.db
+.env
