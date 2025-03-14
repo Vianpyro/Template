@@ -5,7 +5,13 @@ on:
   pull_request: null
 
 jobs:
-  scan-app:
+  scan-devcontainer:
+    name: Scan Devcontainer Image
+
+    permissions:
+      actions: read
+      security-events: write
+
     uses: Vianpyro/Template/.github/workflows/docker-image-verification.yml@docs
     with:
       image_name: devcontainer
