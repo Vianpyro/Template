@@ -13,7 +13,6 @@ on:
       - master
   pull_request: null
 
-
 jobs:
   build:
     name: Lint
