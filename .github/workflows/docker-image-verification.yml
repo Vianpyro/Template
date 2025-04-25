@@ -1,6 +1,7 @@
 name: Reusable Docker Image Build and Scan
 
-permissions: read-all
+permissions:
+  contents: read
 
 on:
   workflow_call:
