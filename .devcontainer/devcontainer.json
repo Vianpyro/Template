@@ -4,6 +4,9 @@
     "customizations": {
         "settings": {
             "terminal.integrated.shell.linux": "/bin/bash"
+        },
+        "vscode": {
+            "extensions": ["esbenp.prettier-vscode"]
         }
     },
     "remoteUser": "vscode"
