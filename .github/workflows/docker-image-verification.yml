@@ -41,7 +41,7 @@ jobs:
       - name: Convert image name to lowercase
         id: prep
         run: |
-          echo "image_tag=$(echo '${{ inputs.image_name }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+          echo "image_tag=$(echo '${{ inputs.image_name }}' | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
 
       - name: Build Docker image and load
         uses: docker/build-push-action@v6
