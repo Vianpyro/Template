@@ -7,14 +7,12 @@ on:
     branches:
       - main
 
-# only keep latest run of this workflow
 concurrency:
   group: first-time-setup
   cancel-in-progress: true
 
 jobs:
   first-time-setup:
-    # ensure run only once, when repo generated
     if: github.run_number == 1
 
     runs-on: ubuntu-latest
@@ -23,20 +21,23 @@ jobs:
       contents: write
 
     steps:
-      # get main branch repo contents
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # remove files not needed for user instance of template
       - name: Remove unneeded files
         run: rm -f README.md .github/workflows/docker-image-verification.yml .github/workflows/first-setup.yml
 
-      # personalize readme for user
-      - name: Init readme
-        run: |
-          echo "# ${{ github.repository }}
+      - name: Clone labels from template
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh label clone Vianpyro/Template --repo ${{ github.repository }} --force
 
-          Welcome to the **${{ github.repository }}** repository! This repository was generated from a template to get you started quickly.
+      - name: Init README
+        run: |
+          REPO_NAME=$(echo "${{ github.repository }}" | cut -d'/' -f2)
+          echo "# ${REPO_NAME}
+
+          Welcome to the **${REPO_NAME}** repository! This repository was generated from a template to get you started quickly.
 
           ## 🚀 Getting Started
 
@@ -45,7 +46,7 @@ jobs:
           1. Clone the repository:
              \`\`\`bash
              git clone https://github.com/${{ github.repository }}.git
-             cd ${{ github.repository }}
+             cd ${REPO_NAME}
              \`\`\`
           2. Install any dependencies (if applicable).
           3. Follow the instructions in the relevant documentation or project files to start working.
@@ -89,8 +90,8 @@ jobs:
           Happy coding! 🎉
           " > README.md
 
-      # save changed files
       - name: Commit changed files
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Setup repo"
+          commit_user_name: Vianpyro
