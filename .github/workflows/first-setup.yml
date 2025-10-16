@@ -34,9 +34,9 @@ jobs:
       # personalize readme for user
       - name: Init readme
         run: |
-          echo "# ${{ github.repository.name }}
+          echo "# ${{ github.repository }}
 
-          Welcome to the **${{ github.repository.name }}** repository! This repository was generated from a template to get you started quickly.
+          Welcome to the **${{ github.repository }}** repository! This repository was generated from a template to get you started quickly.
 
           ## 🚀 Getting Started
 
@@ -45,7 +45,7 @@ jobs:
           1. Clone the repository:
              \`\`\`bash
              git clone https://github.com/${{ github.repository }}.git
-             cd ${{ github.repository.name }}
+             cd ${{ github.repository }}
              \`\`\`
           2. Install any dependencies (if applicable).
           3. Follow the instructions in the relevant documentation or project files to start working.
