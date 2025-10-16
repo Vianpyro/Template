@@ -1,32 +1,40 @@
-name: first-time-setup
-run-name: first time setup of repo
+name: Repository setup
+run-name: Initial setup of repository
 
-# run when branch created (repo generated from template)
+permissions:
+  contents: write
+  issues: write
+
 on:
   push:
     branches:
       - main
 
 concurrency:
-  group: first-time-setup
+  group: repository-setup
   cancel-in-progress: true
 
 jobs:
-  first-time-setup:
+  repository-setup:
+    name: Repository setup
     if: github.run_number == 1
 
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
-      issues: write
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Remove unneeded files
-        run: rm -f README.md .github/workflows/docker-image-verification.yml .github/workflows/first-setup.yml
+        run: |
+          rm -f .github/workflows/docker-image-verification.yml
+          rm -f .github/workflows/repository-setup.yml
+          rm -f README.md
+
+      - name: Remove default labels
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh label list --json name --jq '.[].name' | xargs -I{} gh label delete "{}" --confirm --repo ${{ github.repository }}
 
       - name: Clone labels from template
         env:
@@ -88,8 +96,7 @@ jobs:
 
           Specify your license here (if any). For example: MIT, Apache 2.0, etc.
 
-          Happy coding! 🎉
-          " > README.md
+          Happy coding! 🎉" > README.md
 
       - name: Commit changed files
         uses: stefanzweifel/git-auto-commit-action@v5
