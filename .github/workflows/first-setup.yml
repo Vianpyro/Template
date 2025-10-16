@@ -27,6 +27,13 @@ jobs:
       - name: Remove unneeded files
         run: rm -f README.md .github/workflows/docker-image-verification.yml .github/workflows/first-setup.yml
 
+      - name: Remove default labels
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label list --repo ${{ github.repository }} --json name --jq '.[].name' | \
+          xargs -I {} gh label delete {} --repo ${{ github.repository }} --yes
+
       - name: Clone labels from template
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
