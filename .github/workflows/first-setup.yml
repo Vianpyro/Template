@@ -34,10 +34,9 @@ jobs:
       # personalize readme for user
       - name: Init readme
         run: |
-          echo "
-          # ${{ github.repository_name }}
+          echo "# ${{ github.repository.name }}
 
-          Welcome to the **${{ github.repository_name }}** repository! This repository was generated from a template to get you started quickly.
+          Welcome to the **${{ github.repository.name }}** repository! This repository was generated from a template to get you started quickly.
 
           ## 🚀 Getting Started
 
@@ -46,7 +45,7 @@ jobs:
           1. Clone the repository:
              \`\`\`bash
              git clone https://github.com/${{ github.repository }}.git
-             cd ${{ github.repository_name }}
+             cd ${{ github.repository.name }}
              \`\`\`
           2. Install any dependencies (if applicable).
           3. Follow the instructions in the relevant documentation or project files to start working.
@@ -55,13 +54,19 @@ jobs:
 
           The repository contains the following directories and files:
 
-          - \`src/\` - Your source code or main project files.
-          - \`docs/\` - Documentation and guides.
-          - \`tests/\` - Unit tests and test scripts.
-          - \`README.md\` - This file.
-          - \`.github/\` - GitHub Actions workflows and configuration.
-
-          *(Adjust the structure as needed for your project.)*
+          - \`.devcontainer/\` - Development container configuration for VS Code
+            - \`devcontainer.json\` - Dev container settings
+            - \`Dockerfile\` - Container image definition
+          - \`.github/\` - GitHub-specific configurations
+            - \`ISSUE_TEMPLATE/\` - Issue templates (bug reports, feature requests)
+            - \`pull_request_template.md\` - Pull request template
+            - \`workflows/\` - GitHub Actions workflow files
+          - \`.vscode/\` - VS Code workspace settings and tasks
+          - \`.dockerignore\` - Docker build exclusions
+          - \`.gitattributes\` - Git attributes configuration
+          - \`.gitignore\` - Git ignore patterns
+          - \`.prettierrc\` - Prettier code formatter configuration
+          - \`README.md\` - This file
 
           ## 🛠 Features
 
@@ -82,7 +87,6 @@ jobs:
           Specify your license here (if any). For example: MIT, Apache 2.0, etc.
 
           Happy coding! 🎉
-
           " > README.md
 
       # save changed files
