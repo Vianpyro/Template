@@ -24,10 +24,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Run Prettier
+      - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: "latest"
+
+      - name: Install and run Prettier
         run: |
           npm install -g prettier
           prettier --write .
