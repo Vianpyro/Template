@@ -24,6 +24,14 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Run Prettier
+        uses: actions/setup-node@v6
+        with:
+          node-version: "latest"
+        run: |
+          npm install -g prettier
+          prettier --write .
+
       - name: Super-linter
         uses: super-linter/super-linter/slim@v7
         env:
