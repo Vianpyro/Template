@@ -5,5 +5,8 @@
 super-linter-output
 super-linter.log
 
+# Prettier config
+.prettierrc
+
 # GitHub Actions leftovers
 github_conf
