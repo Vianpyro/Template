@@ -27,7 +27,6 @@ jobs:
 
       - name: Remove unneeded files
         run: |
-          rm -f .github/workflows/docker-image-verification.yml
           rm -f .github/workflows/repository-setup.yml
           rm -f README.md
 
