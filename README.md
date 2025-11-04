@@ -148,7 +148,7 @@ The template enforces a `category/slug` naming pattern for branches:
 
 **Valid examples:**
 
-```
+```bash
 feature/add-user-authentication
 bug/fix-login-redirect
 docs/update-api-docs
@@ -158,7 +158,7 @@ refactor/cleanup-database-layer
 
 **Invalid examples:**
 
-```
+```bash
 Feature/AddAuth          # uppercase not allowed
 feature/_private-method  # starts with underscore
 add-feature              # missing category prefix
