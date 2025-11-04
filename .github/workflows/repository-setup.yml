@@ -75,7 +75,6 @@ jobs:
           - \`.dockerignore\` - Docker build exclusions
           - \`.gitattributes\` - Git attributes configuration
           - \`.gitignore\` - Git ignore patterns
-          - \`.prettierrc\` - Prettier code formatter configuration
           - \`README.md\` - This file
 
           ## 🛠 Features
