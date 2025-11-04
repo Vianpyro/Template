@@ -27,7 +27,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: "latest"
+          node-version: 'latest'
 
       - name: Setup Prettier config
         run: |
@@ -54,7 +54,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_ALL_CODEBASE: false
-          FILTER_REGEX_EXCLUDE: '(.devcontainer/Dockerfile|.github/pull_request_template.md|.github/ISSUE_TEMPLATE/*.md|.github/workflows/.*\.yml)'
           # Disable problematic validators
           VALIDATE_BIOME_FORMAT: false
           VALIDATE_DOCKERFILE_HADOLINT: false

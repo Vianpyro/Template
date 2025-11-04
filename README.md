@@ -48,12 +48,14 @@ This template eliminates the repetitive setup work for new repositories by provi
    - Click "Create repository from template"
 
 2. **Clone your new repository:**
+
    ```bash
    git clone https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git
    cd YOUR-REPO-NAME
    ```
 
 3. **Make your first commit and push to main:**
+
    ```bash
    git add .
    git commit -m "Initial commit"
@@ -119,6 +121,7 @@ The template enforces a `category/slug` naming pattern for branches:
 **Format:** `<category>/<slug>`
 
 **Allowed categories:**
+
 - `feature` - New features
 - `bug`, `fix` - Bug fixes
 - `chore` - Maintenance tasks
@@ -137,12 +140,14 @@ The template enforces a `category/slug` naming pattern for branches:
 - `status` - Status updates
 
 **Slug rules:**
+
 - 3-50 characters
 - Lowercase letters and numbers only
 - May include `-` or `_` inside (but NOT at start or end)
 - Must start and end with alphanumeric characters
 
 **Valid examples:**
+
 ```
 feature/add-user-authentication
 bug/fix-login-redirect
@@ -152,6 +157,7 @@ refactor/cleanup-database-layer
 ```
 
 **Invalid examples:**
+
 ```
 Feature/AddAuth          # uppercase not allowed
 feature/_private-method  # starts with underscore
@@ -166,12 +172,13 @@ To modify allowed categories, edit `.github/workflows/branch-name-validation.yml
 The linter is configured in `.github/workflows/super-linter.yml`. Key settings:
 
 ```yaml
-VALIDATE_ALL_CODEBASE: false   # Only lint changed files
-FIX_MARKDOWN: true             # Auto-fix markdown
-FIX_JSON: true                 # Auto-fix JSON
+VALIDATE_ALL_CODEBASE: false # Only lint changed files
+FIX_MARKDOWN: true # Auto-fix markdown
+FIX_JSON: true # Auto-fix JSON
 ```
 
 **Excluded files** (not linted):
+
 - `.devcontainer/Dockerfile`
 - `.github/pull_request_template.md`
 - `.github/ISSUE_TEMPLATE/*.md`
@@ -215,6 +222,7 @@ After the initial setup, labels are cloned from the template repository. To cust
 **Trigger:** First push to `main` branch only (`if: github.run_number == 1`)
 
 **Actions:**
+
 1. Removes template-specific files
 2. Clears default GitHub labels
 3. Clones label set from template
@@ -226,6 +234,7 @@ After the initial setup, labels are cloned from the template repository. To cust
 **Trigger:** Push to non-main branches or pull requests
 
 **Actions:**
+
 1. Extracts branch name from GitHub context
 2. Validates against naming convention
 3. Fails with detailed error message if invalid
@@ -236,6 +245,7 @@ After the initial setup, labels are cloned from the template repository. To cust
 **Trigger:** Push to `main` or pull request to any branch
 
 **Actions:**
+
 1. Checks out code with full history
 2. Sets up Node.js for Prettier
 3. Installs and runs Prettier on all files
@@ -269,6 +279,7 @@ To disable auto-run, edit `.vscode/tasks.json` and remove the `runOptions` secti
 ### Common Workflows
 
 **Starting a new feature:**
+
 ```bash
 git checkout -b feature/amazing-new-thing
 # ... make changes ...
@@ -277,6 +288,7 @@ git push origin feature/amazing-new-thing
 ```
 
 **Fixing a bug:**
+
 ```bash
 git checkout -b bug/fix-critical-issue
 # ... fix the bug ...
@@ -285,6 +297,7 @@ git push origin bug/fix-critical-issue
 ```
 
 **Quick hotfix:**
+
 ```bash
 git checkout -b hotfix/urgent-production-fix
 # ... apply fix ...
@@ -320,12 +333,14 @@ Visit [choosealicense.com](https://choosealicense.com/) for guidance.
 This template will continue to evolve. To pull updates into existing repositories:
 
 1. Add the template as a remote:
+
    ```bash
    git remote add template https://github.com/Vianpyro/Template.git
    git fetch template
    ```
 
 2. Cherry-pick specific updates:
+
    ```bash
    git cherry-pick <commit-hash>
    ```
@@ -338,21 +353,25 @@ This template will continue to evolve. To pull updates into existing repositorie
 ## 🐛 Troubleshooting
 
 ### Repository setup didn't run
+
 - Ensure you pushed to the `main` branch
 - Check the Actions tab for errors
 - Verify the workflow file exists before the first push
 
 ### Branch name validation failing
+
 - Review the error message for specific guidance
 - Ensure branch name matches `category/slug` format
 - Check that slug is 3-50 characters and lowercase
 
 ### Super-Linter errors
+
 - Review the linter output in the Actions tab
 - Some issues may require manual fixes
 - Consider excluding problematic files in the workflow config
 
 ### Dev container not working
+
 - Ensure Docker is installed and running
 - Verify the Remote-Containers extension is installed in VS Code
 - Check Docker logs for build errors
@@ -368,4 +387,4 @@ This template will continue to evolve. To pull updates into existing repositorie
 
 **Ready to start your next project?** Click "Use this template" and let the automation handle the boring stuff! 🚀
 
-*This README will be automatically replaced after your first push to `main`. Make sure to customize your new README with project-specific information.*
+_This README will be automatically replaced after your first push to `main`. Make sure to customize your new README with project-specific information._
