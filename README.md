@@ -1,6 +1,6 @@
 # Template
 
-A battle-tested, general-purpose GitHub template repository designed to jumpstart any project—from simple Docker images and bash scripts to complex JavaFX applications or Rust terrain generators.
+A battle-tested, general-purpose GitHub template repository designed to jumpstart any project—from simple Docker images and bash scripts to complex JavaFX applications and Rust terrain generators.
 
 ## ✨ Why Use This Template?
 
