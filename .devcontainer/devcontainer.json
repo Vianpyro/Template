@@ -1,12 +1,17 @@
 {
     "name": "Template Development Container",
-    "dockerFile": "Dockerfile",
+    "image": "mcr.microsoft.com/devcontainers/base:bookworm",
     "customizations": {
         "settings": {
             "terminal.integrated.shell.linux": "/bin/bash"
         },
         "vscode": {
-            "extensions": ["esbenp.prettier-vscode"]
+            "extensions": [
+                "ms-vscode.atom-keybindings",
+                "ms-vscode-remote.remote-containers",
+                "ms-azuretools.vscode-docker",
+                "myriad-dreamin.tinymist"
+            ]
         }
     },
     "remoteUser": "vscode"
